@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Brew | Cheerful Coffee & Brunch</title>
+    
+    <!-- Typography: Caprasimo (Display) + Poppins (UI & Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Design Tokens & Variables */
+        :root {
+            --bg-bright: #FFFDF9;
+            --bg-alt: #F1FDFA;
+            --bg-card: #FFFFFF;
+            --text-dark: #0F172A;
+            --text-muted: #526071;
+            --teal: #14B8A6;
+            --teal-hover: #0D9488;
+            --teal-light: #CCFBF1;
+            --orange: #F97316;
+            --orange-hover: #EA580C;
+            --yellow: #FDE047;
+            --yellow-soft: #FEF3C7;
+            --border-soft: rgba(15, 23, 42, 0.08);
+            
+            --ff-heading: 'Caprasimo', Georgia, serif;
+            --ff-body: 'Poppins', sans-serif;
+            
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            --shadow-card: 0 12px 24px -4px rgba(15, 23, 42, 0.06), 0 4px 8px -2px rgba(15, 23, 42, 0.03);
+            --shadow-hover: 0 20px 32px -6px rgba(20, 184, 166, 0.18);
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 28px;
+            --radius-full: 9999px;
+            
+            --transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: var(--ff-body);
+            background-color: var(--bg-bright);
+            color: var(--text-dark);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* Typography Utilities */
+        h1, h2, h3 {
+            font-family: var(--ff-heading);
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--yellow-soft);
+            color: #B45309;
+            padding: 7px 18px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .sub-header {
+            display: inline-block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--orange);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Buttons */
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--teal);
+            color: #FFFFFF;
+            padding: 14px 32px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(20, 184, 166, 0.3);
+        }
+
+        .btn-main:hover {
+            background-color: var(--teal-hover);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(20, 184, 166, 0.4);
+            color: #FFFFFF;
+        }
+
+        .btn-orange {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--orange);
+            color: #FFFFFF;
+            padding: 14px 32px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-orange:hover {
+            background-color: var(--orange-hover);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(249, 115, 22, 0.4);
+            color: #FFFFFF;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .btn-link:hover {
+            color: var(--orange);
+            transform: translateX(4px);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 84px;
+            background-color: rgba(255, 253, 249, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-soft);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: var(--ff-heading);
+            font-size: 1.85rem;
+            color: var(--teal);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            opacity: 0.85;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--teal);
+            transform: translateY(-1px);
+        }
+
+        .nav-cta {
+            background-color: var(--orange);
+            color: #FFFFFF !important;
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background-color: var(--orange-hover);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        /* Hero Section */
+        .hero-vibrant {
+            padding: 150px 0 90px;
+            background: radial-gradient(circle at 80% 20%, #E6FFFA 0%, var(--bg-bright) 65%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-wrapper {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4.4rem;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-content h1 span {
+            color: var(--teal);
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 34px;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .hero-meta {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-mosaic {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            height: 480px;
+            position: relative;
+        }
+
+        .mosaic-item {
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+        }
+
+        .mosaic-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .mosaic-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .mosaic-item.main {
+            grid-column: 1 / 5;
+            grid-row: 1 / 6;
+            z-index: 2;
+        }
+
+        .mosaic-item.accent-1 {
+            grid-column: 4 / 7;
+            grid-row: 4 / 7;
+            z-index: 3;
+            border: 8px solid var(--bg-bright);
+        }
+
+        .mosaic-item.accent-2 {
+            grid-column: 5 / 7;
+            grid-row: 1 / 3;
+            z-index: 1;
+        }
+
+        .hero-sticker {
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            background: var(--yellow);
+            color: var(--text-dark);
+            font-family: var(--ff-heading);
+            padding: 12px 18px;
+            border-radius: var(--radius-full);
+            transform: rotate(8deg);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Our Vibe Section */
+        .vibe-section {
+            background-color: var(--bg-alt);
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .vibe-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .vibe-images {
+            position: relative;
+        }
+
+        .vibe-img-main {
+            width: 85%;
+            height: 440px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+        }
+
+        .vibe-img-small {
+            width: 48%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            position: absolute;
+            bottom: -30px;
+            right: 0;
+            border: 8px solid var(--bg-alt);
+            box-shadow: var(--shadow-card);
+        }
+
+        .vibe-badge {
+            position: absolute;
+            top: 30px;
+            left: -20px;
+            background: #FFFFFF;
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--teal);
+            border-left: 4px solid var(--teal);
+        }
+
+        .vibe-text h2 {
+            font-size: 3.2rem;
+            margin-bottom: 24px;
+        }
+
+        .vibe-text p {
+            font-size: 1.05rem;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background-color: var(--bg-bright);
+        }
+
+        .section-header {
+            max-width: 650px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3.2rem;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 32px;
+            margin-bottom: 50px;
+        }
+
+        .menu-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(20, 184, 166, 0.3);
+        }
+
+        .menu-card-img {
+            height: 230px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .menu-card:hover .menu-card-img img {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 26px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .card-head h3 {
+            font-size: 1.45rem;
+            color: var(--text-dark);
+        }
+
+        .price {
+            font-family: var(--ff-body);
+            font-weight: 700;
+            color: var(--orange);
+            font-size: 1.15rem;
+        }
+
+        .card-content p {
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--text-muted);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--bg-alt);
+            border-top: 1px solid var(--border-soft);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 3.2rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .info-card-group {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .info-box {
+            background: #FFFFFF;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-soft);
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+        .info-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--teal-light);
+            color: var(--teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .info-box h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .info-box p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .contact-form-card {
+            background: #FFFFFF;
+            padding: 44px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-soft);
+        }
+
+        .contact-form-card h3 {
+            font-size: 1.85rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-form-card > p {
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-sm);
+            font-family: var(--ff-body);
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            background: var(--bg-bright);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+            background: #FFFFFF;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 90px 0;
+            background: radial-gradient(circle at 20% 80%, #FEF3C7 0%, #FFFFFF 60%);
+            border-top: 1px solid var(--border-soft);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3.4rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-content p {
+            font-size: 1.15rem;
+            margin-bottom: 34px;
+        }
+
+        /* Newsletter Bar */
+        .newsletter-bar {
+            background-color: var(--teal);
+            color: #FFFFFF;
+            padding: 50px 0;
+        }
+
+        .newsletter-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-text h3 {
+            color: #FFFFFF;
+            font-size: 2rem;
+            margin-bottom: 6px;
+        }
+
+        .newsletter-text p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 440px;
+            width: 100%;
+        }
+
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 14px 20px;
+            border-radius: var(--radius-full);
+            border: none;
+            outline: none;
+            font-family: var(--ff-body);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            background-color: var(--text-dark);
+            color: #FFFFFF;
+            border: none;
+            padding: 14px 28px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0B1120;
+            color: #94A3B8;
+            padding: 60px 0 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr;
+            gap: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 14px;
+        }
+
+        .footer-brand p {
+            color: #94A3B8;
+            font-size: 0.92rem;
+            max-width: 340px;
+            line-height: 1.65;
+        }
+
+        .footer-col h5 {
+            color: #FFFFFF;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col a {
+            color: #94A3B8;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--yellow);
+            transform: translateX(4px);
+            display: inline-block;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: var(--teal);
+            transform: translateY(-3px);
+            color: #FFFFFF;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748B;
+        }
+
+        /* Order Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(6px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .order-modal {
+            background: #FFFFFF;
+            max-width: 480px;
+            width: 100%;
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.9) translateY(20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            background: var(--yellow-soft);
+            color: var(--orange);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+            }
+            .hero-content h1 { font-size: 3.6rem; }
+            .hero-content p { margin: 0 auto 30px; }
+            .hero-actions { justify-content: center; }
+            .hero-meta { justify-content: center; }
+            .hero-mosaic { max-width: 520px; margin: 0 auto; height: 420px; }
+            .vibe-grid { grid-template-columns: 1fr; gap: 50px; }
+            .vibe-images { max-width: 500px; margin: 0 auto; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 84px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 253, 249, 0.98);
+                backdrop-filter: blur(14px);
+                flex-direction: column;
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border-soft);
+                transform: translateY(-150%);
+                transition: transform 0.35s ease;
+                box-shadow: var(--shadow-card);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .navbar .nav-cta {
+                display: none;
+            }
+
+            .hero-content h1 { font-size: 2.9rem; }
+            .vibe-text h2, .section-header h2, .contact-info h2, .cta-content h2 { font-size: 2.6rem; }
+            .contact-form-card { padding: 28px 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .newsletter-inner { flex-direction: column; text-align: center; }
+            .newsletter-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Online Ordering Modal -->
+    <div id="orderModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalOrderTitle">
+        <div class="order-modal">
+            <button class="close-btn" onclick="toggleOrderModal()" aria-label="Close Order Window">&times;</button>
+            <div class="badge-pill" style="margin-bottom:12px;"><i class="fa-solid fa-mug-hot"></i> Express Pickup</div>
+            <h3 id="modalOrderTitle" style="font-size:2rem; margin-bottom:10px;">Order Ahead</h3>
+            <p style="font-size:0.95rem; margin-bottom:24px;">Your order will be freshly prepared and ready for pick-up in 10-15 minutes at our espresso bar.</p>
+            
+            <div style="background:var(--bg-alt); padding:16px; border-radius:var(--radius-md); margin-bottom:24px; text-align:left;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-weight:600; font-size:0.9rem;">
+                    <span>Pick-up Spot:</span>
+                    <span style="color:var(--teal);">12 Sunny Street</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-weight:600; font-size:0.9rem;">
+                    <span>Wait Estimate:</span>
+                    <span style="color:var(--orange);">~12 Mins</span>
+                </div>
+            </div>
+
+            <a href="#menu" class="btn-orange" style="width:100%;" onclick="toggleOrderModal()">Browse Menu & Add Items</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">Bright<span>Brew</span></a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Our Vibe</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="javascript:void(0)" onclick="toggleOrderModal()" class="btn-main" style="padding:8px 20px; font-size:0.85rem;">Order Online</a></li>
+            </ul>
+
+            <div style="display:flex; align-items:center; gap:12px;">
+                <a href="javascript:void(0)" onclick="toggleOrderModal()" class="nav-cta">Order Online</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-vibrant">
+        <div class="container hero-wrapper">
+            <div class="hero-content">
+                <span class="badge-pill">
+                    <i class="fa-solid fa-sun" style="color: #F59E0B;"></i> YOUR NEIGHBORHOOD COFFEE SPOT
+                </span>
+                
+                <h1>Pure Joy in <br><span>Every Sip.</span></h1>
+                
+                <p>Fresh coffee, colorful plates, and good energy from your first sip to your last bite.</p>
+                
+                <div class="hero-actions">
+                    <a href="#menu" class="btn-main">View Full Menu</a>
+                    <a href="#about" class="btn-link">Our Story &rarr;</a>
+                </div>
+
+                <div class="hero-meta">
+                    <i class="fa-regular fa-clock"></i> Open Daily • 7 AM – 6 PM
+                </div>
+            </div>
+            
+            <div class="hero-mosaic">
+                <div class="hero-sticker">
+                    <i class="fa-solid fa-heart"></i> Roasted Fresh!
+                </div>
+                <div class="mosaic-item main">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop" alt="Bright and welcoming café interior with seating">
+                </div>
+                <div class="mosaic-item accent-1">
+                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=400&auto=format&fit=crop" alt="Velvety latte art poured by our barista">
+                </div>
+                <div class="mosaic-item accent-2">
+                    <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=400&auto=format&fit=crop" alt="Fresh artisan avocado toast plate">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Our Vibe Section -->
+    <section id="about" class="section vibe-section">
+        <div class="container vibe-grid">
+            <div class="vibe-images">
+                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop" alt="Barista preparing single-origin pour-over coffee" class="vibe-img-main">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=400&auto=format&fit=crop" alt="Fresh hot cup of craft coffee" class="vibe-img-small">
+                <div class="vibe-badge">
+                    <i class="fa-solid fa-seedling"></i> Ethically Sourced Beans
+                </div>
+            </div>
+            
+            <div class="vibe-text">
+                <span class="sub-header">FRESH • FRIENDLY • FULL OF FLAVOR</span>
+                <h2>Good Coffee. Great Vibe.</h2>
+                <p>Bright Brew is more than a café — it's your neighborhood place to slow down, catch up, and start the day right. We serve carefully sourced coffee, small-batch roasts, fresh brunch favorites, and seasonal drinks made to brighten your everyday routine.</p>
+                <a href="#contact" class="btn-orange">Find Us &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section menu-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-header">WHAT'S COOKING</span>
+                <h2>Cheerful Choices</h2>
+                <p>Coffee, brunch, and little treats worth coming back for.</p>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Classic Latte -->
+                <div class="menu-card">
+                    <div class="menu-card-img">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=600&auto=format&fit=crop" alt="Classic Latte with Latte Art">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-head">
+                            <h3>Classic Latte</h3>
+                            <span class="price">$5.25</span>
+                        </div>
+                        <p>Silky espresso finished with bright, velvety microfoam.</p>
+                    </div>
+                </div>
+
+                <!-- V60 Pour Over -->
+                <div class="menu-card">
+                    <div class="menu-card-img">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600&auto=format&fit=crop" alt="V60 Pour Over Coffee">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-head">
+                            <h3>V60 Pour Over</h3>
+                            <span class="price">$6.00</span>
+                        </div>
+                        <p>Rotating single-origin beans, carefully brewed for a clean, expressive cup.</p>
+                    </div>
+                </div>
+
+                <!-- Sun Toast -->
+                <div class="menu-card">
+                    <div class="menu-card-img">
+                        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=600&auto=format&fit=crop" alt="Sun Toast Avocado Toast">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-head">
+                            <h3>Sun Toast</h3>
+                            <span class="price">$13.50</span>
+                        </div>
+                        <p>Poached egg, chili flakes, and creamy avocado on toasted sourdough.</p>
+                    </div>
+                </div>
+
+                <!-- Butter Croissant -->
+                <div class="menu-card">
+                    <div class="menu-card-img">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600&auto=format&fit=crop" alt="Golden flaky croissant">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-head">
+                            <h3>Butter Croissant</h3>
+                            <span class="price">$4.25</span>
+                        </div>
+                        <p>Flaky, golden, and baked fresh for a buttery morning bite.</p>
+                    </div>
+                </div>
+
+                <!-- Iced Coffee -->
+                <div class="menu-card">
+                    <div class="menu-card-img">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=600&auto=format&fit=crop" alt="Chilled Iced Coffee">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-head">
+                            <h3>Iced Coffee</h3>
+                            <span class="price">$4.25</span>
+                        </div>
+                        <p>Smooth, chilled coffee served over ice for a refreshing pick-me-up.</p>
+                    </div>
+                </div>
+
+                <!-- Seasonal Special -->
+                <div class="menu-card">
+                    <div class="menu-card-img">
+                        <img src="https://images.unsplash.com/photo-1534432182912-63863115e106?q=80&w=600&auto=format&fit=crop" alt="Seasonal fruit pastry and specialty brew">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-head">
+                            <h3>Seasonal Special</h3>
+                            <span class="price">$5.50</span>
+                        </div>
+                        <p>A rotating favorite inspired by the flavors of the season.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="javascript:void(0)" onclick="toggleOrderModal()" class="btn-main">View Full Menu &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <span class="sub-header">COME SAY HELLO</span>
+                <h2>Brighten Our Day</h2>
+                <p class="contact-subtitle">Good coffee tastes even better when shared.</p>
+                
+                <div class="info-card-group">
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>12 Sunny Street, Brightsville, CA 90210</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Mon – Sat: 7 AM — 6 PM<br>Sun: 8 AM — 4 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <h3>Got a Question?</h3>
+                <p>Have a question about the menu, an order, or visiting us? Send us a message.</p>
+                
+                <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! We will reply promptly.'); this.reset();">
+                    <div class="form-group">
+                        <label for="contact-name">Your Name</label>
+                        <input id="contact-name" type="text" placeholder="Alex Morgan" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Your Email</label>
+                        <input id="contact-email" type="email" placeholder="alex@brightmail.com" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Your Message</label>
+                        <textarea id="contact-message" rows="4" placeholder="Ask about catering, coffee bean origins, or special orders..." required aria-required="true"></textarea>
+                    </div>
+                    <button type="submit" class="btn-orange" style="width:100%;">Send Message &rarr;</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container cta-content">
+            <span class="badge-pill"><i class="fa-solid fa-mug-saucer"></i> FRESH BATCH READY</span>
+            <h2>Your Next Favorite Cup Is Waiting.</h2>
+            <p>Freshly brewed coffee. Good food. Bright moments.</p>
+            <a href="javascript:void(0)" onclick="toggleOrderModal()" class="btn-orange">Order Online &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Newsletter Bar -->
+    <section class="newsletter-bar">
+        <div class="container newsletter-inner">
+            <div class="newsletter-text">
+                <h3>Brightening your inbox.</h3>
+                <p>Join our list for seasonal drop announcements, secret roasts, and morning perks.</p>
+            </div>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Yay! You are on the Bright Brew list.'); this.reset();">
+                <input type="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+                <button type="submit">Join List &rarr;</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#home" class="logo">Bright<span>Brew</span></a>
+                <p>Your neighborhood corner for single-origin brews, fresh morning sourdough toasts, and sunny moments together.</p>
+                <div class="social-row">
+                    <a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h5>EXPLORE</h5>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Our Vibe</a></li>
+                    <li><a href="#menu">Breakfast & Brunch Menu</a></li>
+                    <li><a href="#contact">Hours & Directions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>VISIT US</h5>
+                <ul>
+                    <li>12 Sunny Street</li>
+                    <li>Brightsville, CA 90210</li>
+                    <li>Mon – Sat: 7am – 6pm</li>
+                    <li>hello@brightbrewcafe.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>© 2026 WebNova Studio · RR Web Designers · All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile drawer when link clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Order Modal Handler
+        const orderModal = document.getElementById('orderModal');
+
+        function toggleOrderModal() {
+            orderModal.classList.toggle('active');
+        }
+
+        // Close on backdrop click
+        window.addEventListener('click', (e) => {
+            if (e.target === orderModal) {
+                toggleOrderModal();
+            }
+        });
+
+        // Close on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && orderModal.classList.contains('active')) {
+                toggleOrderModal();
+            }
+        });
+    </script>
+</body>
+</html>
